@@ -1,0 +1,9 @@
+@use './mixins';
+@import './normalize';
+
+html {
+  touch-action: manipulation;
+}
+body {
+  margin: 0;
+}

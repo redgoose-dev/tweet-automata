@@ -1,0 +1,12 @@
+# directories
+node_modules/
+.idea/
+dist/
+
+# files
+.DS_Store
+.env.local
+yarn.lock
+package-lock.json
+bun.lockb
+cmd.sh
