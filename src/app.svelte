@@ -1,3 +1,5 @@
-<h1>
-  app.svelte
-</h1>
+<Dashboard/>
+
+<script>
+import Dashboard from '~/dashboard/dashboard.svelte'
+</script>
