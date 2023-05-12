@@ -7,13 +7,11 @@ import { writable, get, derived } from 'svelte/store'
 /**
  * 컬럼의 데이터
  */
-export const columns = writable([1,2,3,4])
+export const columns = writable([])
 /**
  * 대시보드의 설정
  */
-export const settings = writable({
-  theme: 'system',
-})
+export const settings = writable({})
 
 
 /**
@@ -25,5 +23,4 @@ export const settings = writable({
 /**
  * [ FUNCTIONS ]
  */
-
 
