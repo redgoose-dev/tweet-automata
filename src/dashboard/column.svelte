@@ -1,37 +1,52 @@
-{#if cards.length > 0}
-  <ul class="cards">
-    {#each cards as card}
-      <CardWrapper tag="li">
-        <Card data={card}/>
-      </CardWrapper>
-    {/each}
-  </ul>
-{/if}
+<ul bind:this={__cards} class="column"></ul>
 
 <script>
 import { onMount } from 'svelte'
+import { presets } from '~/libs/pattern.js'
 import Card from './card.svelte'
 import CardWrapper from './card-wrapper.svelte'
 
+export let key
 export let data
-let cards = []
-const limit = 12
-let idx = -1
+let io
+let __cards
+let cardKey = -1
 
-export function makeCard()
+export function addCard()
 {
-  idx++
-  cards = [
-    {
-      key: idx,
-      pattern: Math.floor(Math.random() * 24),
+  cardKey++
+  const el = document.createElement('template')
+  const card = new Card({
+    target: el,
+    props: {
+      data: {
+        key: cardKey,
+        pattern: Math.floor(Math.random() * presets.length),
+      },
     },
-    ...cards,
-  ]
-  if (cards.length > limit)
-  {
-    cards = cards.splice(0, limit)
-  }
+  })
+  const __card = card.$$.root.children[0]
+  __cards.prepend(__card)
+  io.observe(__card)
+}
+
+onMount(() => {
+  io = new IntersectionObserver(interactionCallback, {
+    root: __cards,
+    // rootMargin: '0px 0px 420px 0px',
+    // threshold: .5,
+  })
+})
+
+function interactionCallback(entries, observer)
+{
+  entries.forEach(entry => {
+    if (!entry.isIntersecting)
+    {
+      entry.target.remove()
+      observer.unobserve(entry.target)
+    }
+  })
 }
 </script>
 

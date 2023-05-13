@@ -1,3 +1,3 @@
-export const columnCount = 3
+export const columnCount = 4
 
 export const cardOption = {}

@@ -1,6 +1,24 @@
-export const areas = [
-  [
-    'foo1 foo2 foo3',
-    'foo4 foo5 foo6',
-  ]
+export const presets = [
+  {
+    areas: [
+      'image title',
+      'image description',
+      'image meta',
+    ],
+  },
+  {
+    areas: [
+      'title image',
+      'description image',
+      'meta image',
+    ],
+  },
+  {
+    areas: [
+      'image',
+      'title',
+      'description',
+      'meta',
+    ],
+  },
 ]
