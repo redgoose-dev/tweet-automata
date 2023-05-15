@@ -20,6 +20,10 @@ html {
 body {
   margin: 0;
   background: var(--color-bg);
+  overflow: hidden;
+  position: fixed;
+  width: 100dvw;
+  height: 100dvh;
 }
 body, button, input, textarea, select {
   font-family: var(--font-base);

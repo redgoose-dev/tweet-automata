@@ -6,19 +6,4 @@ export const presets = [
       'image meta',
     ],
   },
-  {
-    areas: [
-      'title image',
-      'description image',
-      'meta image',
-    ],
-  },
-  {
-    areas: [
-      'image',
-      'title',
-      'description',
-      'meta',
-    ],
-  },
 ]

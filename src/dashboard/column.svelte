@@ -2,9 +2,8 @@
 
 <script>
 import { onMount } from 'svelte'
-import { presets } from '~/libs/pattern.js'
+import * as cardPattern from '~/dashboard/card/pattern/index.js'
 import Card from './card.svelte'
-import CardWrapper from './card-wrapper.svelte'
 
 export let key
 export let data
@@ -21,7 +20,7 @@ export function addCard()
     props: {
       data: {
         key: cardKey,
-        pattern: Math.floor(Math.random() * presets.length),
+        pattern: Math.floor(Math.random() * cardPattern.components.length),
       },
     },
   })

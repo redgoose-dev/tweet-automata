@@ -6,26 +6,25 @@
   class:open={open}>
   <div class="card__wrap">
     <div class="card__body">
-      <p>.card - {data.key} / {data.pattern}</p>
-      <p>{JSON.stringify(presets[data.pattern])}</p>
+      <svelte:component
+        this={cardPattern.components[data.pattern]}/>
     </div>
   </div>
 </div>
 
 <script>
 import { onMount, tick } from 'svelte'
-import { presets } from '~/libs/pattern.js'
+import { sleep } from '~/libs/util.js'
+import * as cardPattern from '~/dashboard/card/pattern/index.js'
 
 let __root
 export let data
-// console.log(data)
 let open = false
 
 onMount(async () => {
   await tick()
-  setTimeout(() => {
-    open = true
-  }, 30)
+  await sleep(20)
+  open = true
 })
 </script>
 

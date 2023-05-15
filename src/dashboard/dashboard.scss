@@ -3,7 +3,6 @@
   height: 100vh;
   box-sizing: border-box;
   padding: 0;
-  overflow: hidden;
 }
 
 .dashboard {
@@ -12,5 +11,5 @@
   height: 100%;
   box-sizing: border-box;
   grid-template-columns: repeat(var(--dashboard-column, 1), 1fr);
-  gap: 0 var(--dashboard-gap, 0);
+  gap: var(--dashboard-gap, 0);
 }

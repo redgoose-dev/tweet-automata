@@ -23,7 +23,6 @@ import Column from './column.svelte'
 
 let _columns = []
 let current = -1
-
 let now
 let then = performance.now()
 let interval = 1000 / 4
@@ -40,16 +39,14 @@ function ticker()
   if (delta > interval)
   {
     then = now - (delta % interval)
-    const comp = _columns[randomNumber(0, 3)]
+    const comp = _columns[randomNumber(0, $columns.length - 1)]
     if (comp) comp.addCard()
-    // current++
-    // if (current === _columns.length) current = 0
-    // if (_columns[current]?.addCard)
-    // {
-    //   _columns[current].addCard()
-    // }
+    current++
   }
-  requestAnimationFrame(ticker)
+  if ($preference.limitCount === 0 || current < $preference.limitCount)
+  {
+    requestAnimationFrame(ticker)
+  }
 }
 </script>
 
