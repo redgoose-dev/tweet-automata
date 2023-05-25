@@ -3,7 +3,7 @@
 
 :root {
   // color
-  --color-bg: hsl(210 / 25% / 98.43%);
+  --color-bg: hsl(210 25% 98.43%);
   --color-text-base: #222;
   --color-text-key: #0dceae;
   // size
@@ -22,8 +22,6 @@ body {
   background: var(--color-bg);
   overflow: hidden;
   position: fixed;
-  width: 100dvw;
-  height: 100dvh;
 }
 body, button, input, textarea, select {
   font-family: var(--font-base);

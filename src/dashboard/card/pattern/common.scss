@@ -1,4 +1,7 @@
 .card-body {
   display: grid;
-  gap: 4px;
+  align-items: start;
+  gap: var(--card-gap, 8px);
+  min-width: 0;
+  user-select: none;
 }

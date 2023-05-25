@@ -2,7 +2,7 @@
   display: grid;
   gap: var(--dashboard-gap, 0);
   align-content: start;
-  height: 100%;
+  height: calc(100dvh - (var(--dashboard-padding, 16px) * 2));
   margin: 0;
   padding: 0;
   list-style: none;

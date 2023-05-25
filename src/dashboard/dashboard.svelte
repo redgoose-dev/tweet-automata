@@ -1,5 +1,7 @@
 {#if $columns.length > 0}
-  <div class="dashboard-wrapper">
+  <div
+    class="dashboard-wrapper"
+    style:--dashboard-padding={$preference.padding}>
     <article
       class="dashboard"
       style:--dashboard-column={$columns.length || ''}
@@ -18,22 +20,23 @@
 import { onMount, onDestroy } from 'svelte'
 import { columns, settings } from '~/store/dashboard.js'
 import { preference } from '~/store/preference.js'
-import { randomNumber } from '~/libs/util.js'
+import { tickerStatus } from '~/store/dashboard.js'
+import { randomNumber, randomSelectItemFromArray } from '~/libs/util.js'
 import Column from './column.svelte'
 
 let _columns = []
 let current = -1
 let now
 let then = performance.now()
-let interval = 1000 / 4
+let interval = 1000 / getFps()
 let delta
+let frame
 
-onMount(async () => {
-  requestAnimationFrame(ticker)
-})
+onMount(play)
 
 function ticker()
 {
+  if ($tickerStatus === 'stop') return
   now = performance.now()
   delta = now - then
   if (delta > interval)
@@ -45,8 +48,28 @@ function ticker()
   }
   if ($preference.limitCount === 0 || current < $preference.limitCount)
   {
-    requestAnimationFrame(ticker)
+    interval = 1000 / getFps()
+    frame = requestAnimationFrame(ticker)
   }
+}
+
+function getFps()
+{
+  return randomSelectItemFromArray($preference.fps)
+}
+
+export function stop()
+{
+  if (!frame) return
+  $tickerStatus = 'stop'
+  cancelAnimationFrame(frame)
+  frame = undefined
+}
+export function play()
+{
+  if (frame) return
+  $tickerStatus = 'play'
+  frame = requestAnimationFrame(ticker)
 }
 </script>
 

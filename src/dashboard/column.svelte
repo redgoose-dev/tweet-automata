@@ -2,7 +2,8 @@
 
 <script>
 import { onMount } from 'svelte'
-import * as cardPattern from '~/dashboard/card/pattern/index.js'
+import { randomSelectItemFromArray } from '~/libs/util.js'
+import { preference } from '~/store/preference.js'
 import Card from './card.svelte'
 
 export let key
@@ -20,7 +21,7 @@ export function addCard()
     props: {
       data: {
         key: cardKey,
-        pattern: Math.floor(Math.random() * cardPattern.components.length),
+        pattern: getPattern(),
       },
     },
   })
@@ -29,13 +30,22 @@ export function addCard()
   io.observe(__card)
 }
 
+function getPattern()
+{
+  return randomSelectItemFromArray($preference.cardPatternArea)
+}
+
 onMount(() => {
   io = new IntersectionObserver(interactionCallback, {
     root: __cards,
-    // rootMargin: '0px 0px 420px 0px',
-    // threshold: .5,
+    rootMargin: $preference.observer.rootMargin || undefined,
+    threshold: $preference.observer.threshold || undefined,
   })
 })
+
+// onDestroy(() => {
+//   io = undefined
+// })
 
 function interactionCallback(entries, observer)
 {
