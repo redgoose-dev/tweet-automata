@@ -16,7 +16,7 @@
 {/if}
 
 <script>
-import { onMount } from 'svelte'
+import { onMount, tick } from 'svelte'
 import { columns, tickerStatus } from '~/store/dashboard.js'
 import { columnTypes, cardOption } from '~/libs/defaults.js'
 import { sleep, getScreenMode } from '~/libs/util.js'
@@ -30,14 +30,15 @@ let timer
 let column
 let useControl = import.meta.env.DEV
 
-onMount(() => {
+onMount(async () => {
   setupPreference(true)
+  await tick()
   window.addEventListener('resize', onResize)
   column = columnTypes[getScreenMode()]
   play().then()
 })
 
-async function onResize(e)
+async function onResize()
 {
   if (timer)
   {
