@@ -26,10 +26,10 @@ onMount(() => {
 .title {
   margin: 2px 0 0;
   grid-area: var(--area, auto);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 1.24;
-  letter-spacing: -.5px;
+  letter-spacing: -1px;
   box-sizing: border-box;
   overflow: hidden;
   text-overflow: ellipsis;

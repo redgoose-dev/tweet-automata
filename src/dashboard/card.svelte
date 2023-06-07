@@ -26,7 +26,7 @@ let open = false
 let speed = (() => randomSelectItemFromArray($preference.cardAnimationSpeed))()
 let shuffle = (() => {
   if (!$preference.shuffleText) return false
-  return randomSelectItemFromArray([ true, false, false, false, false ])
+  return randomSelectItemFromArray([ true, false, true, false, false ])
 })()
 
 onMount(async () => {

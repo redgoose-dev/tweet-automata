@@ -8,6 +8,7 @@ import svelteConfig from './svelte.config'
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
   return {
+    base: './',
     server: {
       host: env.VITE_HOST,
       port: Number(env.VITE_PORT),
@@ -19,6 +20,7 @@ export default defineConfig(({ mode }) => {
       }
     },
     build: {
+      outDir: 'docs',
       rollupOptions: {
         external: [],
         output: {

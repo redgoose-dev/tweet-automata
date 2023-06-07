@@ -67,7 +67,7 @@ $: colors = (() => {
     case 'grayscale':
     default:
       hue = 1
-      brightness = getValue([ 40, 160 ])
+      brightness = getValue([ 20, 240 ])
       saturate = 0
       break
   }

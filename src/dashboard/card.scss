@@ -6,8 +6,8 @@
   background: var(--bg, hsl(0 0% 100%));
   box-shadow:
     0 0 0 1px hsl(0 0% 0% / 10%),
-    0 2px 16px 0 hsl(0 0% 0% / 20%);
-  border-radius: 8px;
+    0 2px 16px 0 hsl(0 0% 0% / 15%);
+  border-radius: 2px;
   &__wrap {
     overflow: hidden;
     box-sizing: border-box;
@@ -15,7 +15,7 @@
   &__body {
     display: grid;
     grid-template-areas: var(--areas);
-    padding: var(--card-padding, 16px);
+    padding: var(--card-padding, 12px);
     box-sizing: border-box;
   }
   &.open {

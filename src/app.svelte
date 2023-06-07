@@ -31,7 +31,7 @@ let column
 let useControl = import.meta.env.DEV
 
 onMount(async () => {
-  setupPreference(true)
+  setupPreference()
   await tick()
   window.addEventListener('resize', onResize)
   column = columnTypes[getScreenMode()]
@@ -84,21 +84,26 @@ function onToggle()
 .control {
   position: fixed;
   z-index: 2;
-  right: 100px;
-  bottom: 100px;
+  right: 42px;
+  bottom: 42px;
   button {
     padding: 8px 12px;
     cursor: pointer;
-    border-radius: 8px;
     border: none;
-    box-shadow: 0 2px 8px hsl(0 0% 0% / 75%);
+    box-shadow: 0 2px 8px hsl(0 0% 0% / 25%), 0 0 0 1px hsl(0 0% 100% / 50%);
+    width: 64px;
+    height: 64px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: background-color 200ms ease-out;
+    color: #fff;
+    background: #555;
     &.stop {
-      background: red;
-      color: #fff;
+      background: #f11356;
     }
     &.play {
-      background: green;
-      color: #fff;
+      background: #1eb81c;
     }
   }
 }

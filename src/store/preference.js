@@ -5,8 +5,8 @@ import { getValue, randomNumber, randomSelectItemFromArray, pureObject } from '~
  * [ STATE ]
  */
 export const preference = writable({
-  padding: '32px',
-  columnGap: '16px 16px',
+  padding: '16px',
+  columnGap: '8px 8px',
   theme: 'system',
   limitCount: 0,
   loadingTime: 250, // ms
@@ -32,41 +32,42 @@ export const preference = writable({
  * [ FUNCTIONS ]
  */
 
-export function setupPreference(random = true)
+export function setupPreference()
 {
-  if (!random) return
   let pref = pureObject(get(preference))
-  pref.padding = randomSelectItemFromArray([
-    '8px', '8px',
-    '16px', '16px',
-    '24px', '24px',
-    '32px',
-  ])
-  pref.columnGap = randomSelectItemFromArray([
-    '4px 4px',
-    '8px 8px', '8px 8px',
-    '12px 12px', '12px 12px',
-    '16px 16px',
-  ])
-  pref.thumbnailPreset = randomSelectItemFromArray([
-    'grayscale',
-    'grayscale',
-    'grayscale-light',
-    'grayscale-light',
-    'random',
-    'random',
-    'random',
-    'random',
-    'random',
-    'aquamarine',
-    'blue-water',
-    'sea-blue',
-    'crimson',
-    'pink',
-  ])
+  // pref.padding = randomSelectItemFromArray([
+  //   '4px', '4px',
+  //   '8px', '8px',
+  //   '16px', '16px',
+  //   '24px', '24px',
+  //   '32px',
+  // ])
+  // pref.columnGap = randomSelectItemFromArray([
+  //   '4px 4px',
+  //   '8px 8px', '8px 8px',
+  //   '12px 12px', '12px 12px',
+  //   '16px 16px',
+  // ])
+  // pref.thumbnailPreset = randomSelectItemFromArray([
+  //   'grayscale',
+  //   'grayscale',
+  //   'grayscale-light',
+  //   'grayscale-light',
+  //   'random',
+  //   'random',
+  //   'random',
+  //   'random',
+  //   'random',
+  //   'aquamarine',
+  //   'blue-water',
+  //   'sea-blue',
+  //   'crimson',
+  //   'pink',
+  // ])
   pref.cardAnimationSpeed = randomSelectItemFromArray([
     [ 280, 360, 420, 540 ],
     [ 240, 320, 360, 480, 640 ],
+    [ 360, 360, 640, 520, 720 ],
   ])
   pref.cardPatternArea = randomSelectItemFromArray([
     [ 0, 0, 0, 1, 2, 3, 4, 5, 6, 6, 6 ],

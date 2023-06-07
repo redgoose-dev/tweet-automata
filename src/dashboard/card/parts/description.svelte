@@ -34,7 +34,7 @@ onMount(async () => {
 .description {
   --description-font-size: 12px;
   --description-line-height: 1.24;
-  --description-line-count: 3;
+  --description-line-count: 2;
   margin: 0;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -43,9 +43,10 @@ onMount(async () => {
   box-sizing: border-box;
   font-size: var(--description-font-size);
   line-height: var(--description-line-height);
-  max-height: calc(var(--description-font-size) * var(--description-line-height) * var(--description-line-count));
+  height: calc(var(--description-font-size) * var(--description-line-height) * var(--description-line-count));
   word-break: break-all;
   overflow: hidden;
   text-overflow: ellipsis;
+  letter-spacing: -.5px;
 }
 </style>
